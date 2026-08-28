@@ -55,16 +55,16 @@ header::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
   border-radius:12px;padding:8px 9px;text-align:center
 }
 .stat .k{font-size:10px;opacity:.72;letter-spacing:.02em}
-.stat .v{font-size:16px;font-weight:800;margin-top:1px;font-variant-numeric:tabular-nums}
-.stat .s{font-size:9.5px;opacity:.62}
+.stat .v{font-size:17px;font-weight:800;margin-top:2px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .v em{font-style:normal;font-size:10.5px;font-weight:600;opacity:.7;margin-left:2px}
 nav{
   position:sticky;top:0;z-index:40;background:var(--card);
   border-bottom:1px solid var(--line);padding:8px 10px;box-shadow:var(--shadow)
 }
-.navgrid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.navgrid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
 .navgrid button{
   border:1px solid var(--line);background:var(--bg);color:var(--ink2);
-  border-radius:10px;padding:7px 2px;font-size:11px;font-weight:600;cursor:pointer;
+  border-radius:10px;padding:6px 2px;font-size:10.5px;font-weight:600;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;gap:2px;font-family:inherit;line-height:1.25
 }
 .navgrid button em{font-style:normal;font-size:15px;line-height:1}
@@ -142,28 +142,16 @@ a{color:var(--accent2);text-decoration:none;font-weight:600}
 .dayctl button{border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:9px;padding:5px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
 .dayctl button:active{transform:scale(.96)}
-.wxbar{background:var(--card);border-bottom:1px solid var(--line);padding:8px 14px}
-.wxbar-in{max-width:640px;margin:0 auto;display:flex;align-items:stretch;gap:6px}
-.wxbar .tag{display:flex;flex-direction:column;justify-content:center;padding-right:9px;
-  border-right:1px solid var(--line);margin-right:3px;flex-shrink:0}
-.wxbar .tag b{font-size:10.5px;font-weight:800;color:var(--accent);line-height:1.25;letter-spacing:-.02em}
-.wxbar .tag small{font-size:9px;color:var(--ink3)}
-.wxbar .d{flex:1;min-width:0;text-align:center;background:var(--bg);border:1px solid var(--line);
-  border-radius:9px;padding:4px 2px;cursor:pointer}
-.wxbar .d:active{transform:scale(.97)}
-.wxbar .d .dd{font-size:9.5px;color:var(--ink3);font-weight:700;line-height:1.3}
-.wxbar .d .ii{font-size:14px;line-height:1.3}
-.wxbar .d .tt{font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.wxbar .d .tt i{font-style:normal;font-size:10px;color:var(--ink3);font-weight:600}
-.wxbar .d .rr{font-size:9px;color:var(--ink3);font-weight:600;line-height:1.3}
-.wx{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
-.wx-d{background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:11px 6px;text-align:center;box-shadow:var(--shadow)}
-.wx-d .d{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:-.01em}
-.wx-d .ic{font-size:25px;line-height:1.35;margin:1px 0}
-.wx-d .t{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.wx-d .t small{font-size:12px;font-weight:600;color:var(--ink3)}
-.wx-d .h{font-size:10px;color:var(--ink3);margin-top:3px;line-height:1.45}
+.wxbar{background:var(--card);border-bottom:1px solid var(--line);padding:7px 14px}
+.wxbar-in{max-width:640px;margin:0 auto}
+.wxbar .l1{font-size:10.5px;font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1.45}
+.wxbar .l1 span{font-weight:600;color:var(--ink3);font-size:9.5px}
+.wxbar .l2{font-size:11px;color:var(--ink2);font-variant-numeric:tabular-nums;
+  letter-spacing:-.03em;line-height:1.5;white-space:nowrap;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.wxbar .l2::-webkit-scrollbar{display:none}
+.wxbar .l2 b{color:var(--ink);font-weight:800}
+.wxbar .l2 i{font-style:normal;color:var(--ink3);opacity:.4;margin:0 4px}
 .calc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
 .frow{display:flex;align-items:center;gap:9px;margin-bottom:9px}
 .frow label{font-size:12px;font-weight:700;width:78px;flex-shrink:0;color:var(--ink2)}
@@ -208,25 +196,22 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     </div>
   </div>
   <div class="hd-stat">
-    <div class="stat"><div class="k">D-DAY</div><div class="v" id="dday">–</div><div class="s" id="ddaySub">출발까지</div></div>
-    <div class="stat"><div class="k">현지 시각</div><div class="v" id="clock">–</div><div class="s">서울과 시차 0</div></div>
-    <div class="stat"><div class="k">기준 환율</div><div class="v" id="rateHd">8.7</div><div class="s">원 / 1엔</div></div>
+    <div class="stat"><div class="k">D-DAY</div><div class="v" id="dday">–</div></div>
+    <div class="stat"><div class="k">현지 시각</div><div class="v" id="clock">–</div></div>
+    <div class="stat"><div class="k">기준 환율</div><div class="v"><span id="rateHd">8.7</span><em>원/엔</em></div></div>
   </div>
 </header>
 
 <div class="wxbar">
   <div class="wxbar-in">
-    <div class="tag"><b>🌤️ 날씨</b><small>8/29 조회</small></div>
-    <div class="d" data-go="weather"><div class="dd">9/5 토</div><div class="ii">🌦️</div><div class="tt">27~30°</div><div class="rr">비 30%</div></div>
-    <div class="d" data-go="weather"><div class="dd">9/6 일</div><div class="ii">🌤️</div><div class="tt">28~29°</div><div class="rr">비 20%</div></div>
-    <div class="d" data-go="weather"><div class="dd">9/7 월</div><div class="ii">☀️</div><div class="tt">29~33°</div><div class="rr">비 10%</div></div>
+    <div class="l1">🌤️ 여행기간 날씨 <span>8/29 조회 · 예보 편차 최대 4℃ · 9/2~3 재확인</span></div>
+    <div class="l2"><b>9/5토</b> 27~30° 비30%<i>|</i><b>9/6일</b> 28~29° 비20%<i>|</i><b>9/7월</b> 29~33° 비10%</div>
   </div>
 </div>
 
 <nav>
   <div class="navgrid">
     <button data-tab="schedule" class="on"><em>📅</em>일정</button>
-    <button data-tab="weather"><em>🌤️</em>날씨</button>
     <button data-tab="spots"><em>🗼</em>명소</button>
     <button data-tab="places"><em>🍣</em>맛집</button>
     <button data-tab="transit"><em>🚇</em>교통</button>
@@ -319,8 +304,9 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
       <div class="ev"><div class="tm">20:00</div><b>숙소 복귀 · 체크인</b>
         <span>아카바네바시 → 츠키지시조 직통.</span></div>
 
-      <div class="ev"><div class="tm">20:40</div><b>첫날 저녁</b>
-        <span>숙소 근처 츠키지·히가시긴자 이자카야. 도보권에 선택지가 많아 지친 상태로 멀리 안 나가도 됩니다.</span></div>
+      <div class="ev"><div class="tm">20:40</div><b>⭐ 첫날 저녁 — 이번 여행의 한 끼</b>
+        <span>1인 <b>¥8,000~11,000</b>(₩70,000~96,000). 3일 중 <b>유일하게 격을 올린 끼니</b>입니다. 숙소 도보권이라 일정을 하나도 바꾸지 않고 올릴 수 있는 자리라 여기로 정했습니다.</span>
+        <div class="meta">긴자 스시 오마카세(디너 저가대)·가이세키·야키토리 오마카세 / 가볍게 가려면 긴자 라이온 비어홀 · <b>상한 1인 ₩100,000 이내</b> · 인기 업장은 예약 권장</div></div>
     </div></div>
   </div>
 
@@ -455,19 +441,16 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   </div>
 
   <div class="note g">
-    <b>💰 한 끼를 올린다면 — 상한(1인 ₩100,000) 안에서 쓸 수 있는 두 가지</b><br>
-    현재 식비는 상한을 한참 밑돕니다(아침 26% · 점심 17% · 저녁 35%). 여유분을 한 끼에 몰아줄 수 있습니다.<br><br>
+    <b>💰 식사 예산 — Day 1 저녁만 격상 (확정)</b><br>
+    상한은 <b>1인 1끼 ₩100,000</b>(≈¥11,400)입니다. 여유분을 흩뿌리지 않고 <b>한 끼에 몰아줬습니다.</b><br><br>
 
-    <b>① Day 1 저녁을 긴자에서 격상 <span class="chip g">추천 · 일정 변경 없음</span></b><br>
-    ¥8,000~11,000/인(₩70,000~96,000)이면 상한 이내입니다. 첫날 저녁은 이미 <b>숙소 도보권 긴자·츠키지</b>라
-    일정을 하나도 안 바꾸고 격만 올릴 수 있습니다. <b>가성비 대비 효과가 가장 큽니다.</b><br><br>
+    <b>✅ Day 1 저녁 = 1인 ¥8,000~11,000 (₩70,000~96,000)</b><br>
+    첫날 저녁은 이미 <b>숙소 도보권 긴자·츠키지</b>라 <b>일정을 하나도 바꾸지 않고</b> 격만 올릴 수 있습니다.
+    그래서 여기로 정했습니다.<br><br>
 
-    <b>② Day 1 점심을 오마카세로 <span class="chip w">일정 교체 필요</span></b><br>
-    점심 오마카세 ¥8,000~11,000이면 역시 상한 이내입니다. 다만 <b>13:10 츠키지 맛보기를 빼고
-    하마리큐(¥300)도 포기</b>해야 시간이 납니다. 츠키지는 Day 3 아침에 제대로 가니 중복이 아깝진 않지만,
-    <b>하마리큐를 잃는 게 실질 비용</b>입니다.<br><br>
-
-    ⛔ <b>저녁 오마카세(¥15,000~40,000 ≈ ₩130,000~348,000)는 상한 초과</b>라 넣지 않았습니다.
+    나머지 끼니는 상한을 한참 밑돕니다 — 아침 26% · 점심 17% · Day 2 저녁 35%.<br>
+    ⛔ <b>저녁 오마카세(¥15,000~40,000 ≈ ₩130,000~348,000)는 상한 초과</b>라 제외했습니다.
+    점심 오마카세(¥8,000~11,000)는 상한 이내지만 <b>츠키지 맛보기와 하마리큐를 포기</b>해야 시간이 나서 채택하지 않았습니다.
   </div>
 
   <div class="note">
@@ -482,134 +465,16 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     낮 최고 <b>30~32℃</b>, 습도 <b>70~80%</b>, 밤에도 24℃ 아래로 잘 안 떨어집니다.
     그래서 <b>야외는 오전과 저녁에, 한낮(13~16시)은 실내로</b> 배치했습니다 —
     Day 2의 메구로강 도보 뒤에 냉방 카페를, Day 3의 한낮에 소라마치를 붙여 둔 게 그 이유입니다.<br>
-    👉 3일 예보·평년값·일출일몰·태풍 대응은 <b>🌤️ 날씨 탭</b>에 따로 정리해 뒀습니다.
-  </div>
-</section>
-<!-- ================= 날씨 ================= -->
-<section id="tab-weather">
-  <h2 class="sec">🌤️ 여행기간 날씨</h2>
-  <p class="lede">9월 초 도쿄는 <b>아직 한여름</b>입니다. 이 일정에서 가장 큰 변수라 따로 정리했습니다.</p>
-
-  <div class="note a">
-    <b>⚠️ 예보 두 곳이 서로 다릅니다 — 그게 지금 가장 정확한 정보입니다</b><br>
-    2026-08-29(출발 7일 전) 기준으로 <b>미국계·일본계 예보를 둘 다 조회했더니 최대 4℃ 차이</b>가 났습니다.
-    특히 <b>9/7은 한쪽이 "가장 시원한 날", 다른 쪽이 "가장 더운 날"</b>이라고 정반대로 말합니다.<br><br>
-    이건 어느 한쪽이 틀린 게 아니라 <b>아직 확정될 수 없는 시점</b>이라는 뜻입니다.
-    그래서 하나를 고르지 않고 <b>범위로</b> 표시했습니다.<br>
-    <b>👉 9/2~9/3(출발 2~3일 전)에 반드시 다시 확인하세요.</b>
+    <span style="color:var(--ink3)">비 올 때 일자별 실내 대체안은 🚨 비상 탭에, 옷차림은 ✅ 준비물 탭에 있습니다.</span>
   </div>
 
-  <h3 class="grp">3일 예보 (8/29 조회 · 범위)</h3>
-  <div class="wx">
-    <div class="wx-d">
-      <div class="d">9/5 (토)</div>
-      <div class="ic">🌦️</div>
-      <div class="t">27~30°</div>
-      <div class="h">밤 21~26°<br><b>비 30%</b></div>
-    </div>
-    <div class="wx-d">
-      <div class="d">9/6 (일)</div>
-      <div class="ic">🌤️</div>
-      <div class="t">28~29°</div>
-      <div class="h">밤 22~25°<br><b>비 20%</b></div>
-    </div>
-    <div class="wx-d">
-      <div class="d">9/7 (월)</div>
-      <div class="ic">☀️</div>
-      <div class="t">29~33°</div>
-      <div class="h">밤 25~28°<br><b>비 10%</b></div>
-    </div>
-  </div>
-
-  <h3 class="grp">두 예보 원본 비교</h3>
-  <div class="tbl-scroll"><table>
-    <tr><th>날짜</th><th class="num">미국계</th><th class="num">일본계</th><th class="num">차이</th></tr>
-    <tr><td>9/5 (토)</td><td class="num">30° / 26°</td><td class="num">27° / 21°</td><td class="num" style="color:var(--warn)">3~5°</td></tr>
-    <tr><td>9/6 (일)</td><td class="num">29° / 25°</td><td class="num">28° / 22°</td><td class="num">1~3°</td></tr>
-    <tr><td>9/7 (월)</td><td class="num">29° / 25°</td><td class="num"><b>33° / 28°</b></td><td class="num" style="color:var(--warn)">4° · 방향 반대</td></tr>
-  </table></div>
-  <div class="note">
-    <b>어떻게 쓰면 되나</b><br>
-    • <b>짐은 더운 쪽(33°)에 맞춰</b> 싸세요. 더운데 옷이 두꺼우면 답이 없지만, 시원하면 겉옷 하나로 해결됩니다.<br>
-    • <b>일정은 지금 그대로 두세요.</b> 어느 예보가 맞든 "야외는 오전·저녁, 한낮은 실내" 배치는 유효합니다.<br>
-    • <b>9/5 비 30%</b>가 셋 중 가장 높습니다. 도착일이라 우산은 캐리어 맨 위에 두세요.
-  </div>
-
-  <h3 class="grp">평년값 — 이쪽이 더 확실합니다</h3>
-  <div class="tbl-scroll"><table>
-    <tr><th>항목</th><th>9월 상순 도쿄</th></tr>
-    <tr><td>낮 최고</td><td><b>30~32℃</b></td></tr>
-    <tr><td>밤 최저</td><td><b>24~26℃</b> (열대야)</td></tr>
-    <tr><td>습도</td><td><b>70~80%</b></td></tr>
-    <tr><td>강수</td><td>상순 일평균 약 7.6mm · 1mm 이상 강수일 월 10일</td></tr>
-    <tr><td>흐린 날</td><td>약 52% — 종일 쨍한 날이 오히려 드묾</td></tr>
-    <tr><td>태풍</td><td>월 <b>1~2회</b> 영향 · 9월이 연중 피크</td></tr>
-  </table></div>
   <div class="note g">
-    <b>좋은 소식 하나 —</b> 흐린 날이 절반이라는 건 <b>땡볕을 피할 확률도 그만큼</b>이라는 뜻입니다.
-    9월 초 도쿄에서 종일 맑으면 오히려 더 힘듭니다.
-  </div>
-
-  <h3 class="grp">체감은 어떤가</h3>
-  <div class="card">
-    <h4>한국 한여름과 비슷하거나 조금 더 눅눅합니다</h4>
-    <p><b>30℃ + 습도 70%</b>는 체감온도가 35℃ 안팎으로 올라갑니다. 기온 숫자보다 습도가 문제입니다.</p>
-    <p>도심은 아스팔트·빌딩 복사열이 더해져 <b>낮 13~16시가 가장 힘듭니다.</b> 그래서 이 일정은 그 시간대를 실내로 채워 뒀습니다.</p>
-    <div class="chips"><span class="chip w">체감 35℃ 안팎</span><span class="chip">밤에도 25℃</span><span class="chip a">13~16시 실내 배치</span></div>
-  </div>
-
-  <h3 class="grp">일출 · 일몰 — 일정과 직결됩니다</h3>
-  <div class="tbl-scroll"><table>
-    <tr><th>날짜</th><th class="num">일출(약)</th><th class="num">일몰(약)</th></tr>
-    <tr><td>9/5 (토)</td><td class="num">05:15</td><td class="num">18:06</td></tr>
-    <tr><td>9/6 (일)</td><td class="num">05:15</td><td class="num">18:05</td></tr>
-    <tr><td>9/7 (월)</td><td class="num">05:16</td><td class="num">18:03</td></tr>
-  </table></div>
-  <div class="card" style="margin-top:10px">
-    <h4>이 시각이 일정에 미치는 영향</h4>
-    <p>🍣 <b>Day 3 츠키지 06:20</b> — 일출이 05:15이라 <b>이미 훤합니다.</b> 어두운 새벽길 걱정은 없습니다.</p>
-    <p>🗼 <b>Day 1 도쿄타워</b> — 18:00 조조지 도착이면 일몰(18:06) 직전. 해가 넘어가고 타워 조명이 켜지는 <b>골든아워를 정확히 맞춥니다.</b></p>
-    <p>🌃 <b>Day 2 시부야</b> — 17:10 도착이라 밝을 때 스크램블을 보고, 18:05 이후 네온이 살아나는 것까지 이어서 봅니다.</p>
-    <p style="color:var(--ink3);font-size:11.5px">※ 일출·일몰은 근사치입니다(±2분).</p>
-  </div>
-
-  <h3 class="grp">그래서 뭘 입고 뭘 챙기나</h3>
-  <div class="card">
-    <h4>완전 여름옷 + 얇은 겉옷 1벌</h4>
-    <p>겉옷은 <b>추위가 아니라 실내 냉방</b>용입니다. 일본 전철·백화점·식당 냉방은 한국보다 셉니다.</p>
-    <p><b>땀 대책이 핵심:</b> 여벌 양말, 손수건(일본 화장실엔 페이퍼타월이 없는 곳이 많습니다), 휴대용 선풍기, 쿨링 시트.</p>
-    <p><b>신발</b> — 하루 1만 5천 보 이상 걷습니다. 샌들보다 통풍 좋은 운동화가 낫습니다(메구로강 강변·나카미세 인파).</p>
-    <p><b>물</b> — 자판기가 도처에 있어 미리 많이 들고 다닐 필요는 없습니다. ¥130~180.</p>
-  </div>
-  <div class="card">
-    <h4>우산은 접이식으로 2개</h4>
-    <p>9월은 연중 강수량이 가장 많은 달입니다. 다만 종일 오기보다 <b>소나기성으로 쏟아졌다 그치는</b> 패턴이 흔합니다.</p>
-    <p>편의점에서 비닐우산 ¥500~700에 살 수 있으니, 짐이 부담되면 현지 조달도 방법입니다.</p>
-  </div>
-
-  <h3 class="grp">🌀 태풍이 오면</h3>
-  <div class="card">
-    <h4>징후는 하루 전에 나옵니다</h4>
-    <p>태풍 접근 시 철도사가 <b>계획운휴(計画運休)</b>를 전날 예고합니다. 지연이 아니라 <b>전철이 통째로 멈춥니다.</b></p>
-    <p>이 일정에서 가장 위험한 지점은 <b>Day 3 나리타 이동</b>입니다. 액세스특급이 멈추면 대안이 마땅치 않으니, 태풍 예보가 있으면 <b>공항으로 훨씬 일찍 출발</b>하세요.</p>
-  </div>
-  <div class="card">
-    <h4>비·태풍용 대체 일정 (전 구간 실내)</h4>
-    <p><b>Day 1 대체</b> — 하마리큐 대신 긴자식스·미츠코시·이토야. 도쿄타워는 실내 전망대라 비가 와도 올라갈 수는 있습니다(조망은 포기).</p>
-    <p><b>Day 2 대체</b> — 메구로강 도보를 빼고 <b>에비스 가든플레이스 실내 + 스타벅스 리저브 로스터리</b>에 시간을 몰아주기. 시부야는 스크램블스퀘어·히카리에·파르코가 전부 실내로 연결됩니다.</p>
-    <p><b>Day 3 대체</b> — <b>소라마치</b>가 300여 점포 실내 몰이라 여기서 시간을 늘리면 됩니다. 츠키지는 아케이드형 골목이라 비에도 어느 정도 다닐 만합니다.</p>
-    <div class="chips"><span class="chip g">소라마치</span><span class="chip g">긴자식스</span><span class="chip g">로스터리</span><span class="chip g">하마리큐 찻집</span><span class="chip g">YEBISU BREWERY</span></div>
-  </div>
-
-  <h3 class="grp">출발 전 확인할 곳</h3>
-  <div class="card">
-    <p><a href="https://www.jma.go.jp/bosai/forecast/" target="_blank" rel="noopener">🇯🇵 일본 기상청(JMA) 예보</a> — 가장 정확한 원본. 태풍 진로도 여기서</p>
-    <p><a href="https://tenki.jp/forecast/3/16/" target="_blank" rel="noopener">📊 tenki.jp 도쿄</a> — 시간대별 예보가 상세</p>
-    <p><a href="https://www.google.com/search?q=tokyo+weather" target="_blank" rel="noopener">🔍 구글 도쿄 날씨</a> — 간편 확인</p>
-    <p style="margin-top:8px"><b>앱</b> — 재난경보는 일본 정부 제공 <b>"Safety tips"</b>(다국어)를 출발 전 설치해 두세요. 태풍·지진 경보가 한국어로 옵니다.</p>
+    <b>🌅 일출 05:15 · 일몰 18:05 — 이 시각이 일정을 만들었습니다</b><br>
+    • <b>Day 3 츠키지 06:20</b> — 일출이 05:15이라 <b>이미 훤합니다.</b> 어두운 새벽길 걱정 없음<br>
+    • <b>Day 1 도쿄타워</b> — 18:00 조조지 도착이면 일몰 직전. 조명 켜지는 <b>골든아워를 정확히</b> 맞춥니다<br>
+    • <b>Day 2 시부야</b> — 17:10 도착이라 밝을 때 스크램블을 보고 18:05 이후 네온까지 이어서 봅니다
   </div>
 </section>
-
 <!-- ================= 명소 ================= -->
 <section id="tab-spots">
   <h2 class="sec">🗼 명소</h2>
@@ -758,12 +623,14 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 
   <div class="note a">
     <b>💰 식사 예산 상한 — 1인 1끼 ₩100,000 이내</b><br>
-    환율 8.7원 기준 <b>¥11,400</b>이 상한선입니다. 아래 추천은 <b>딱 한 곳만 빼고 전부 이 안에 들어옵니다.</b><br><br>
+    환율 8.7원 기준 <b>¥11,400</b>이 상한선입니다. 아래 추천은 <b>딱 한 곳만 빼고 전부 이 안에 들어옵니다.</b><br>
+    ⭐ <b>Day 1 저녁만 격상 확정</b> — 1인 ¥8,000~11,000(₩70,000~96,000), 상한의 78%.<br><br>
     <span class="chip g">츠키지 아침 ¥3,000 ≈ ₩26,000</span>
     <span class="chip g">라멘 ¥1,200 ≈ ₩10,000</span>
     <span class="chip g">텐동 ¥2,000 ≈ ₩17,000</span>
     <span class="chip g">이자카야 ¥4,000 ≈ ₩35,000</span>
     <span class="chip g">스키야키 점심 ¥5,000 ≈ ₩44,000</span>
+    <span class="chip a">⭐Day1 저녁 ¥9,000 ≈ ₩78,000</span>
     <span class="chip w">저녁 오마카세 ¥15,000~ ≈ ₩130,000~ ⛔초과</span>
   </div>
 
@@ -802,12 +669,13 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=izakaya+near+Higashi-Ginza+Station" target="_blank" rel="noopener">🗺️ 주변 이자카야 보기</a>
   </div>
   <div class="card">
-    <h4>스시 오마카세 — <b style="color:var(--accent)">점심으로 가세요</b></h4>
-    <div class="sub">긴자 일대 · 점심 ¥8,000~11,000 <b>(₩70,000~96,000 — 상한 이내 ✅)</b></div>
-    <p><b>저녁 오마카세는 ¥15,000~40,000</b>으로 <b style="color:var(--warn)">1인 ₩130,000~348,000</b> — 정하신 <b>1끼 ₩100,000 상한을 넘습니다.</b></p>
-    <p>같은 업장이라도 <b>런치 코스는 대개 절반 이하</b>입니다. 재료와 대접은 크게 다르지 않고 코스 가짓수만 줄어듭니다. <b>점심에 가면 상한 안에서 오마카세를 경험할 수 있습니다.</b></p>
-    <p>⚠️ 다만 <b>이 일정엔 긴자에서 여유 있게 점심 먹을 시간이 없습니다.</b> Day 1은 13:10 츠키지·Day 2는 에비스·Day 3은 소라마치입니다. 하시려면 <b>Day 1 점심을 오마카세로 바꾸고 하마리큐를 빼는</b> 방식이 현실적입니다.</p>
-    <div class="chips"><span class="chip w">인기 업장은 수개월 전 예약</span><span class="chip">호텔 컨시어지 경유 필요한 곳도 있음</span></div>
+    <h4>⭐ Day 1 저녁 — 이번 여행의 한 끼 <span class="badge b-must">확정</span></h4>
+    <div class="sub">긴자·츠키지 도보권 · 1인 ¥8,000~11,000 <b>(₩70,000~96,000 — 상한의 78%)</b></div>
+    <p>3일 중 <b>유일하게 격을 올린 끼니</b>입니다. 첫날 저녁이 이미 숙소 도보권이라 <b>일정을 하나도 바꾸지 않고</b> 올릴 수 있어 여기로 정했습니다.</p>
+    <p><b>후보:</b> 긴자 스시 오마카세(디너 저가대 ¥10,000 전후) · 가이세키 · 야키토리 오마카세 · 뎃판야키. 가볍게 가려면 <b>긴자 라이온 비어홀</b>도 이 자리에 맞습니다.</p>
+    <p>⛔ <b>고급 저녁 오마카세는 ¥15,000~40,000</b>이라 <b style="color:var(--warn)">1인 ₩130,000~348,000</b> — 상한을 넘습니다. 이 등급은 넣지 않았습니다.</p>
+    <p>💡 <b>점심 오마카세</b>(¥8,000~11,000)도 상한 이내지만, 이 일정엔 긴자에서 점심 먹을 시간이 없습니다(Day1 츠키지·Day2 에비스·Day3 소라마치). 하시려면 <b>Day 1 점심으로 바꾸고 하마리큐를 포기</b>해야 합니다.</p>
+    <div class="chips"><span class="chip a">예약 권장</span><span class="chip w">인기 업장은 수개월 전</span><span class="chip">호텔 컨시어지 경유 필요한 곳도 있음</span></div>
     <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=sushi+omakase+lunch+Ginza" target="_blank" rel="noopener">🗺️ 긴자 오마카세 찾기</a>
   </div>
 
@@ -1213,15 +1081,16 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <tr><td>교통 (IC카드 + <b>나리타 왕복</b>)</td><td class="num">¥9,100</td><td class="num">79,000</td></tr>
     <tr><td>Day3 츠키지 아침</td><td class="num">¥6,000</td><td class="num">52,000</td></tr>
     <tr><td>점심 3회</td><td class="num">¥12,000</td><td class="num">104,000</td></tr>
-    <tr><td>저녁 2회</td><td class="num">¥16,000</td><td class="num">139,000</td></tr>
+    <tr><td><b>Day1 저녁 (격상 확정)</b></td><td class="num">¥18,000</td><td class="num">157,000</td></tr>
+    <tr><td>Day2 저녁</td><td class="num">¥8,000</td><td class="num">70,000</td></tr>
     <tr><td>카페·간식·편의점</td><td class="num">¥6,000</td><td class="num">52,000</td></tr>
     <tr><td>도쿄타워 메인덱 2인</td><td class="num">¥3,000</td><td class="num">26,000</td></tr>
     <tr><td>스카이트리 덴보덱 2인 <span style="color:var(--ok)">(월·평일가)</span></td><td class="num">¥3,600</td><td class="num">31,000</td></tr>
     <tr><td>하마리큐 2인</td><td class="num">¥600</td><td class="num">5,000</td></tr>
     <tr><td>예비비</td><td class="num">¥10,000</td><td class="num">87,000</td></tr>
-    <tr style="background:var(--chip)"><td><b>소계 (쇼핑 제외)</b></td><td class="num"><b>¥66,300</b></td><td class="num"><b>577,000</b></td></tr>
+    <tr style="background:var(--chip)"><td><b>소계 (쇼핑 제외)</b></td><td class="num"><b>¥76,300</b></td><td class="num"><b>664,000</b></td></tr>
     <tr><td>쇼핑·기념품 <span style="color:var(--ink3)">(변동 큼)</span></td><td class="num">¥30,000~</td><td class="num">261,000~</td></tr>
-    <tr style="background:var(--chip)"><td><b>현지 합계</b></td><td class="num"><b>¥96,300~</b></td><td class="num"><b>838,000~</b></td></tr>
+    <tr style="background:var(--chip)"><td><b>현지 합계</b></td><td class="num"><b>¥106,300~</b></td><td class="num"><b>925,000~</b></td></tr>
   </table></div>
 
   <h3 class="grp">선결제 항목 (2인)</h3>
@@ -1235,8 +1104,9 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   </table></div>
 
   <div class="note a" style="margin-top:12px">
-    <b>총 예상 — 약 170만 ~ 280만원 (2인)</b><br>
-    쇼핑을 크게 하지 않으면 <b>190만원 안팎</b>, 오마카세·시부야스카이·쇼핑을 얹으면 <b>250만원 이상</b>으로 올라갑니다.
+    <b>총 예상 — 약 180만 ~ 290만원 (2인)</b><br>
+    Day 1 저녁 격상이 이미 포함된 금액입니다. 쇼핑을 크게 하지 않으면 <b>200만원 안팎</b>,
+    시부야스카이·쇼핑까지 얹으면 <b>260만원 이상</b>으로 올라갑니다.
   </div>
 
   <h3 class="grp">돈이 크게 갈리는 지점</h3>
@@ -1252,9 +1122,10 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
       <tr><th>끼니</th><th class="num">1인 책정</th><th class="num">상한 대비</th></tr>
       <tr><td>츠키지 아침</td><td class="num">¥3,000 (₩26,000)</td><td class="num" style="color:var(--ok)">26%</td></tr>
       <tr><td>점심 (평균)</td><td class="num">¥2,000 (₩17,000)</td><td class="num" style="color:var(--ok)">17%</td></tr>
-      <tr><td>저녁 (평균)</td><td class="num">¥4,000 (₩35,000)</td><td class="num" style="color:var(--ok)">35%</td></tr>
+      <tr style="background:rgba(var(--ok-r),.09)"><td><b>Day1 저녁 (격상)</b></td><td class="num"><b>¥9,000 (₩78,000)</b></td><td class="num" style="color:var(--ok)"><b>78%</b></td></tr>
+      <tr><td>Day2 저녁</td><td class="num">¥4,000 (₩35,000)</td><td class="num" style="color:var(--ok)">35%</td></tr>
     </table></div>
-    <p style="margin-top:8px">한 끼 정도는 <b>¥8,000~11,000(₩70,000~96,000)</b>까지 올려도 상한 안입니다. 올린다면 <b>Day 1 저녁(긴자)</b> 또는 <b>점심 오마카세</b>가 값어치가 가장 큽니다.</p>
+    <p style="margin-top:8px"><b>전 끼니가 상한 이내</b>입니다. 가장 비싼 Day 1 저녁도 78%라 ¥11,400까지는 여유가 남습니다.</p>
   </div>
   <div class="card">
     <h4>② 전망대 개수</h4>
@@ -1306,9 +1177,18 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <p><b>확인처:</b> NHK World 앱, 일본 기상청(jma.go.jp), 각 철도사 공지, 공항·항공사 앱.</p>
   </div>
   <div class="card">
-    <h4>태풍 당일이면</h4>
-    <p>무리해서 나가지 말고 <b>실내 일정으로 통째 교체</b>하세요. 이 일정 기준 대체지: <b>도쿄 소라마치</b>(스카이트리 하단), <b>긴자식스·미츠코시</b>, <b>에비스 가든플레이스</b>, <b>하마리큐 나카지마 찻집</b>. 전부 지하철역과 실내로 연결되거나 매우 가깝습니다.</p>
-    <p>숙소가 츠키지·긴자 도보권이라 <b>걸어서 갈 수 있는 실내 선택지가 많은 것이 큰 안전판</b>입니다.</p>
+    <h4>태풍·폭우 당일이면 — 일자별 실내 대체안</h4>
+    <p>무리해서 나가지 말고 <b>실내 일정으로 통째 교체</b>하세요.</p>
+    <p><b>Day 1</b> — 하마리큐 대신 긴자식스·미츠코시·이토야. 도쿄타워는 실내 전망대라 올라갈 수는 있습니다(조망은 포기).</p>
+    <p><b>Day 2</b> — 메구로강 도보를 빼고 <b>에비스 가든플레이스 실내 + 스타벅스 리저브 로스터리</b>에 시간을 몰아주기. 시부야는 스크램블스퀘어·히카리에·파르코가 전부 실내로 연결됩니다.</p>
+    <p><b>Day 3</b> — <b>소라마치</b>가 300여 점포 실내 몰이라 여기서 시간을 늘리면 됩니다. 츠키지는 아케이드형 골목이라 비에도 어느 정도 다닐 만합니다.</p>
+    <div class="chips"><span class="chip g">소라마치</span><span class="chip g">긴자식스</span><span class="chip g">로스터리</span><span class="chip g">하마리큐 찻집</span><span class="chip g">YEBISU BREWERY</span></div>
+    <p style="margin-top:8px">숙소가 츠키지·긴자 도보권이라 <b>걸어서 갈 수 있는 실내 선택지가 많은 것이 큰 안전판</b>입니다.</p>
+  </div>
+  <div class="card">
+    <h4>날씨 확인처</h4>
+    <p><a href="https://www.jma.go.jp/bosai/forecast/" target="_blank" rel="noopener">🇯🇵 일본 기상청(JMA)</a> · <a href="https://tenki.jp/forecast/3/16/" target="_blank" rel="noopener">📊 tenki.jp 도쿄</a></p>
+    <p><b>앱</b> — 재난경보는 일본 정부 제공 <b>"Safety tips"</b>(다국어)를 출발 전 설치해 두세요. 태풍·지진 경보가 한국어로 옵니다.</p>
   </div>
   <div class="card">
     <h4>귀국편이 걸리면</h4>
@@ -1378,10 +1258,6 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     btn.addEventListener("click", function(){ showTab(btn.dataset.tab); });
   });
 
-  /* ---------- 상단 날씨 띠 → 날씨 탭 ---------- */
-  $$(".wxbar .d[data-go]").forEach(function(el){
-    el.addEventListener("click", function(){ showTab(el.dataset.go); });
-  });
 
   /* ---------- 다크모드 ---------- */
   var darkBtn = $("#darkToggle");
@@ -1408,18 +1284,15 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   /* ---------- D-day ---------- */
   function midnight(s){ var p = s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
   function updateDday(){
-    var el = $("#dday"), sub = $("#ddaySub");
+    var el = $("#dday");
     if (!el) return;
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var start = midnight(TRIP_START), end = midnight(TRIP_END);
     var diff = Math.round((start - today) / 86400000);
-    if (diff > 0)       { el.textContent = "D-" + diff;  sub.textContent = "출발까지"; }
-    else if (today <= end){
-      var n = Math.round((today - start) / 86400000) + 1;
-      el.textContent = "DAY " + n; sub.textContent = n + " / " + TRIP_DAYS + "일차";
-    }
-    else                { el.textContent = "완료";      sub.textContent = "다녀왔습니다"; }
+    if (diff > 0)          { el.textContent = "D-" + diff; }
+    else if (today <= end) { el.textContent = "DAY " + (Math.round((today - start) / 86400000) + 1); }
+    else                   { el.textContent = "완료"; }
   }
 
   /* ---------- 도쿄 시계 (UTC+9) ---------- */
