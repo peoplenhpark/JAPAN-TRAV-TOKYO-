@@ -84,12 +84,17 @@
 **스택**: 순수 정적 단일 HTML. **CDN·프레임워크·빌드도구 전부 없음.**
 CSS는 `<head>` 인라인 `<style>` 하나, JS는 파일 하단 인라인 `<script>` 하나(IIFE).
 
-### 탭 구조 (10개, 모바일 5×2 그리드)
+### 탭 구조 (11개, 모바일 **4열 × 3행** 그리드)
 `<nav>`의 버튼 `data-tab="..."` ↔ `<section id="tab-...">` 매칭.
+
+⚠️ **탭을 추가/삭제하면 `.navgrid`의 `grid-template-columns`를 함께 조정할 것.**
+10개일 땐 5열(5×2)이었고, 날씨 탭을 넣으며 **4열(4·4·3)** 로 바꿨다.
+5열에 11개를 두면 마지막 줄에 버튼 1개만 남아 보기 나쁘다.
 
 | data-tab | 라벨 | section id |
 |----------|------|------------|
 | schedule | 📅 일정 | `#tab-schedule` |
+| weather | 🌤️ 날씨 | `#tab-weather` |
 | spots | 🗼 명소 | `#tab-spots` |
 | places | 🍣 맛집 | `#tab-places` |
 | transit | 🚇 교통 | `#tab-transit` |

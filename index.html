@@ -40,7 +40,8 @@ header::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
 .hd-top{display:flex;align-items:flex-start;gap:10px;max-width:640px;margin:0 auto}
 .hd-title{flex:1;min-width:0}
 .hd-title h1{margin:0;font-size:19px;font-weight:800;letter-spacing:-.02em}
-.hd-title p{margin:3px 0 0;font-size:12.5px;opacity:.82}
+.hd-title p{margin:3px 0 0;font-size:12px;opacity:.82;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;letter-spacing:-.02em}
 .hd-btns{display:flex;gap:6px;flex-shrink:0}
 .iconbtn{
   width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.26);
@@ -60,10 +61,10 @@ nav{
   position:sticky;top:0;z-index:40;background:var(--card);
   border-bottom:1px solid var(--line);padding:8px 10px;box-shadow:var(--shadow)
 }
-.navgrid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.navgrid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .navgrid button{
   border:1px solid var(--line);background:var(--bg);color:var(--ink2);
-  border-radius:10px;padding:6px 2px;font-size:10.5px;font-weight:600;cursor:pointer;
+  border-radius:10px;padding:7px 2px;font-size:11px;font-weight:600;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;gap:2px;font-family:inherit;line-height:1.25
 }
 .navgrid button em{font-style:normal;font-size:15px;line-height:1}
@@ -134,6 +135,14 @@ a{color:var(--accent2);text-decoration:none;font-weight:600}
 .ev b{font-size:13.5px;font-weight:700;display:block;letter-spacing:-.01em}
 .ev span{font-size:12px;color:var(--ink2);display:block;margin-top:2px}
 .ev .meta{font-size:11px;color:var(--ink3);margin-top:3px}
+.wx{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
+.wx-d{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:11px 6px;text-align:center;box-shadow:var(--shadow)}
+.wx-d .d{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:-.01em}
+.wx-d .ic{font-size:25px;line-height:1.35;margin:1px 0}
+.wx-d .t{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.wx-d .t small{font-size:12px;font-weight:600;color:var(--ink3)}
+.wx-d .h{font-size:10px;color:var(--ink3);margin-top:3px;line-height:1.45}
 .calc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
 .frow{display:flex;align-items:center;gap:9px;margin-bottom:9px}
 .frow label{font-size:12px;font-weight:700;width:78px;flex-shrink:0;color:var(--ink2)}
@@ -170,7 +179,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   <div class="hd-top">
     <div class="hd-title">
       <h1>도쿄 2박 3일</h1>
-      <p>2026.09.05(토) ~ 09.07(월) · 2인 · 긴자 서머셋</p>
+      <p>2026.09.05(토)~09.07(월) · 2인 · 긴자 서머셋</p>
     </div>
     <div class="hd-btns">
       <button class="iconbtn" id="darkToggle" title="다크모드">🌙</button>
@@ -187,6 +196,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 <nav>
   <div class="navgrid">
     <button data-tab="schedule" class="on"><em>📅</em>일정</button>
+    <button data-tab="weather"><em>🌤️</em>날씨</button>
     <button data-tab="spots"><em>🗼</em>명소</button>
     <button data-tab="places"><em>🍣</em>맛집</button>
     <button data-tab="transit"><em>🚇</em>교통</button>
@@ -414,14 +424,123 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   </div>
 
   <div class="note">
-    <b>🌡️ 9월 초는 아직 한여름입니다 — 이 일정의 최대 변수</b><br>
-    9월 <b>상순</b>은 하순보다 확실히 덥습니다. 낮 최고 <b>30~32℃</b>, 습도 <b>70~75%</b>, 밤에도 24℃ 아래로 잘 안 떨어집니다.
-    게다가 9월은 연중 강수량이 가장 많고 <b>태풍이 월 1~2회</b> 지나갑니다.<br><br>
-    그래서 일정을 이렇게 배치했습니다 — <b>야외는 오전과 저녁에, 한낮(13~16시)은 실내로.</b>
+    <b>🌡️ 9월 초는 아직 한여름 — 이 일정의 최대 변수</b><br>
+    낮 최고 <b>30~32℃</b>, 습도 <b>70~80%</b>, 밤에도 24℃ 아래로 잘 안 떨어집니다.
+    그래서 <b>야외는 오전과 저녁에, 한낮(13~16시)은 실내로</b> 배치했습니다 —
     Day 2의 메구로강 도보 뒤에 냉방 카페를, Day 3의 한낮에 소라마치를 붙여 둔 게 그 이유입니다.<br>
-    실내 대피처: <b>소라마치 · 긴자식스 · 스타벅스 리저브 로스터리 · 하마리큐 찻집 · YEBISU BREWERY</b>. 태풍 대응은 비상 탭에 있습니다.
+    👉 3일 예보·평년값·일출일몰·태풍 대응은 <b>🌤️ 날씨 탭</b>에 따로 정리해 뒀습니다.
   </div>
 </section>
+<!-- ================= 날씨 ================= -->
+<section id="tab-weather">
+  <h2 class="sec">🌤️ 여행기간 날씨</h2>
+  <p class="lede">9월 초 도쿄는 <b>아직 한여름</b>입니다. 이 일정에서 가장 큰 변수라 따로 정리했습니다.</p>
+
+  <div class="note a">
+    <b>⚠️ 먼저 — 이 예보는 믿을 수 있는 만큼만 믿으세요</b><br>
+    아래 3일 예보는 <b>2026-08-28(출발 8일 전) 조회 기준</b>입니다.
+    이 시점의 예보는 <b>기온은 대체로 맞지만 비·태풍은 거의 맞지 않습니다.</b><br>
+    <b>👉 9/2~9/3(출발 2~3일 전)에 반드시 다시 확인하세요.</b> 그때부터가 실제로 쓸 수 있는 예보입니다.
+  </div>
+
+  <h3 class="grp">3일 예보 (8/28 기준 · 참고용)</h3>
+  <div class="wx">
+    <div class="wx-d">
+      <div class="d">9/5 (토)</div>
+      <div class="ic">☀️</div>
+      <div class="t">30°<small> / 26°</small></div>
+      <div class="h">습도 64%<br>동풍 약간</div>
+    </div>
+    <div class="wx-d">
+      <div class="d">9/6 (일)</div>
+      <div class="ic">🌤️</div>
+      <div class="t">29°<small> / 25°</small></div>
+      <div class="h">습도 68%<br>남풍</div>
+    </div>
+    <div class="wx-d">
+      <div class="d">9/7 (월)</div>
+      <div class="ic">🌥️</div>
+      <div class="t">29°<small> / 25°</small></div>
+      <div class="h">습도 71%<br>남풍</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--ink3);margin:-4px 0 0">화씨 원자료를 섭씨로 환산한 값입니다(86/84°F → 30/29°C). 아이콘은 기온·습도 기반 추정이며 강수 예보가 아닙니다.</p>
+
+  <h3 class="grp">평년값 — 이쪽이 더 확실합니다</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>항목</th><th>9월 상순 도쿄</th></tr>
+    <tr><td>낮 최고</td><td><b>30~32℃</b></td></tr>
+    <tr><td>밤 최저</td><td><b>24~26℃</b> (열대야)</td></tr>
+    <tr><td>습도</td><td><b>70~80%</b></td></tr>
+    <tr><td>강수</td><td>상순 일평균 약 7.6mm · 1mm 이상 강수일 월 10일</td></tr>
+    <tr><td>흐린 날</td><td>약 52% — 종일 쨍한 날이 오히려 드묾</td></tr>
+    <tr><td>태풍</td><td>월 <b>1~2회</b> 영향 · 9월이 연중 피크</td></tr>
+  </table></div>
+  <div class="note g">
+    <b>좋은 소식 하나 —</b> 흐린 날이 절반이라는 건 <b>땡볕을 피할 확률도 그만큼</b>이라는 뜻입니다.
+    9월 초 도쿄에서 종일 맑으면 오히려 더 힘듭니다.
+  </div>
+
+  <h3 class="grp">체감은 어떤가</h3>
+  <div class="card">
+    <h4>한국 한여름과 비슷하거나 조금 더 눅눅합니다</h4>
+    <p><b>30℃ + 습도 70%</b>는 체감온도가 35℃ 안팎으로 올라갑니다. 기온 숫자보다 습도가 문제입니다.</p>
+    <p>도심은 아스팔트·빌딩 복사열이 더해져 <b>낮 13~16시가 가장 힘듭니다.</b> 그래서 이 일정은 그 시간대를 실내로 채워 뒀습니다.</p>
+    <div class="chips"><span class="chip w">체감 35℃ 안팎</span><span class="chip">밤에도 25℃</span><span class="chip a">13~16시 실내 배치</span></div>
+  </div>
+
+  <h3 class="grp">일출 · 일몰 — 일정과 직결됩니다</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>날짜</th><th class="num">일출(약)</th><th class="num">일몰(약)</th></tr>
+    <tr><td>9/5 (토)</td><td class="num">05:15</td><td class="num">18:06</td></tr>
+    <tr><td>9/6 (일)</td><td class="num">05:15</td><td class="num">18:05</td></tr>
+    <tr><td>9/7 (월)</td><td class="num">05:16</td><td class="num">18:03</td></tr>
+  </table></div>
+  <div class="card" style="margin-top:10px">
+    <h4>이 시각이 일정에 미치는 영향</h4>
+    <p>🍣 <b>Day 3 츠키지 06:20</b> — 일출이 05:15이라 <b>이미 훤합니다.</b> 어두운 새벽길 걱정은 없습니다.</p>
+    <p>🗼 <b>Day 1 도쿄타워</b> — 18:00 조조지 도착이면 일몰(18:06) 직전. 해가 넘어가고 타워 조명이 켜지는 <b>골든아워를 정확히 맞춥니다.</b></p>
+    <p>🌃 <b>Day 2 시부야</b> — 17:10 도착이라 밝을 때 스크램블을 보고, 18:05 이후 네온이 살아나는 것까지 이어서 봅니다.</p>
+    <p style="color:var(--ink3);font-size:11.5px">※ 일출·일몰은 근사치입니다(±2분).</p>
+  </div>
+
+  <h3 class="grp">그래서 뭘 입고 뭘 챙기나</h3>
+  <div class="card">
+    <h4>완전 여름옷 + 얇은 겉옷 1벌</h4>
+    <p>겉옷은 <b>추위가 아니라 실내 냉방</b>용입니다. 일본 전철·백화점·식당 냉방은 한국보다 셉니다.</p>
+    <p><b>땀 대책이 핵심:</b> 여벌 양말, 손수건(일본 화장실엔 페이퍼타월이 없는 곳이 많습니다), 휴대용 선풍기, 쿨링 시트.</p>
+    <p><b>신발</b> — 하루 1만 5천 보 이상 걷습니다. 샌들보다 통풍 좋은 운동화가 낫습니다(메구로강 강변·나카미세 인파).</p>
+    <p><b>물</b> — 자판기가 도처에 있어 미리 많이 들고 다닐 필요는 없습니다. ¥130~180.</p>
+  </div>
+  <div class="card">
+    <h4>우산은 접이식으로 2개</h4>
+    <p>9월은 연중 강수량이 가장 많은 달입니다. 다만 종일 오기보다 <b>소나기성으로 쏟아졌다 그치는</b> 패턴이 흔합니다.</p>
+    <p>편의점에서 비닐우산 ¥500~700에 살 수 있으니, 짐이 부담되면 현지 조달도 방법입니다.</p>
+  </div>
+
+  <h3 class="grp">🌀 태풍이 오면</h3>
+  <div class="card">
+    <h4>징후는 하루 전에 나옵니다</h4>
+    <p>태풍 접근 시 철도사가 <b>계획운휴(計画運休)</b>를 전날 예고합니다. 지연이 아니라 <b>전철이 통째로 멈춥니다.</b></p>
+    <p>이 일정에서 가장 위험한 지점은 <b>Day 3 나리타 이동</b>입니다. 액세스특급이 멈추면 대안이 마땅치 않으니, 태풍 예보가 있으면 <b>공항으로 훨씬 일찍 출발</b>하세요.</p>
+  </div>
+  <div class="card">
+    <h4>비·태풍용 대체 일정 (전 구간 실내)</h4>
+    <p><b>Day 1 대체</b> — 하마리큐 대신 긴자식스·미츠코시·이토야. 도쿄타워는 실내 전망대라 비가 와도 올라갈 수는 있습니다(조망은 포기).</p>
+    <p><b>Day 2 대체</b> — 메구로강 도보를 빼고 <b>에비스 가든플레이스 실내 + 스타벅스 리저브 로스터리</b>에 시간을 몰아주기. 시부야는 스크램블스퀘어·히카리에·파르코가 전부 실내로 연결됩니다.</p>
+    <p><b>Day 3 대체</b> — <b>소라마치</b>가 300여 점포 실내 몰이라 여기서 시간을 늘리면 됩니다. 츠키지는 아케이드형 골목이라 비에도 어느 정도 다닐 만합니다.</p>
+    <div class="chips"><span class="chip g">소라마치</span><span class="chip g">긴자식스</span><span class="chip g">로스터리</span><span class="chip g">하마리큐 찻집</span><span class="chip g">YEBISU BREWERY</span></div>
+  </div>
+
+  <h3 class="grp">출발 전 확인할 곳</h3>
+  <div class="card">
+    <p><a href="https://www.jma.go.jp/bosai/forecast/" target="_blank" rel="noopener">🇯🇵 일본 기상청(JMA) 예보</a> — 가장 정확한 원본. 태풍 진로도 여기서</p>
+    <p><a href="https://tenki.jp/forecast/3/16/" target="_blank" rel="noopener">📊 tenki.jp 도쿄</a> — 시간대별 예보가 상세</p>
+    <p><a href="https://www.google.com/search?q=tokyo+weather" target="_blank" rel="noopener">🔍 구글 도쿄 날씨</a> — 간편 확인</p>
+    <p style="margin-top:8px"><b>앱</b> — 재난경보는 일본 정부 제공 <b>"Safety tips"</b>(다국어)를 출발 전 설치해 두세요. 태풍·지진 경보가 한국어로 옵니다.</p>
+  </div>
+</section>
+
 <!-- ================= 명소 ================= -->
 <section id="tab-spots">
   <h2 class="sec">🗼 명소</h2>
