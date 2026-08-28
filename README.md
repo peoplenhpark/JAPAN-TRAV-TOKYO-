@@ -1,5 +1,7 @@
 # 🗼 도쿄 2박 3일 — 인터랙티브 여행 가이드
 
+### 📱 **[가이드 열기 →](https://peoplenhpark.github.io/JAPAN-TRAV-TOKYO-/)**
+
 **2026.09.05(토) ~ 09.07(월) · 2인 · 나리타 IN/OUT · 긴자 서머셋(츠키지) 숙박**
 
 휴대폰에서 여는 단일 HTML 여행 가이드입니다.
@@ -16,9 +18,14 @@
 파일을 카카오톡·메일 등으로 자기 자신에게 보낸 뒤 브라우저로 엽니다.
 아이폰은 Safari에서 열고 **공유 → 홈 화면에 추가**하면 앱처럼 쓸 수 있습니다.
 
-**③ GitHub Pages로 배포하기**
-`Settings → Pages → Source: Deploy from a branch → main / (root) → Save`
-→ `https://peoplenhpark.github.io/JAPAN-TRAV-TOKYO-/` 에서 열립니다.
+**③ 웹에서 바로 열기 ✅ 배포됨**
+
+### 👉 **https://peoplenhpark.github.io/JAPAN-TRAV-TOKYO-/**
+
+휴대폰 브라우저에서 이 주소만 열면 됩니다. 파일을 옮길 필요가 없습니다.
+
+> ⚠️ `github.com/...` 주소는 **소스 보관소**라 파일 목록만 보입니다.
+> 가이드가 실제로 열리는 건 위의 **`github.io`** 주소입니다.
 
 > 💡 **오프라인에서도 동작합니다.** CDN·외부 라이브러리를 일절 쓰지 않아 해외에서 데이터가 끊겨도 레이아웃이 깨지지 않습니다. 지도 링크만 인터넷이 필요합니다.
 

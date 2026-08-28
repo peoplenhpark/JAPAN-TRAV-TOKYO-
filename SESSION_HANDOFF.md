@@ -198,10 +198,19 @@ public이라 아래가 인터넷에 검색된다. 2026-08-28에 사용자에게 
 
 > 참고: 메모리 [[feedback-no-remote-push]]는 **투자 repo(`telegram_summary`) 전용** 규칙이라 이 프로젝트에는 적용되지 않는다.
 
-### GitHub Pages — 아직 미활성 (`/pages` API 404)
-활성화하면 휴대폰에서 URL로 바로 열 수 있다. **웹 UI에서만 가능**(`gh` 없음, API 활성화는 인증 토큰 필요):
-Settings → Pages → Source: **Deploy from a branch** → Branch: **main** / **/(root)** → Save.
-→ 배포 URL: `https://peoplenhpark.github.io/JAPAN-TRAV-TOKYO-/` (저장소명 끝의 하이픈 포함)
+### GitHub Pages — ✅ 배포 완료 (2026-08-28)
+**https://peoplenhpark.github.io/JAPAN-TRAV-TOKYO-/** (저장소명 끝의 하이픈 포함)
+- source = `main` / `/(root)`, `build_type: legacy`, HTTPS 강제(http→https 301)
+- 실측 검증: HTTP 200 · 89,920 bytes(로컬과 일치) · D-day/시계/환율 JS 정상 · 탭 10 · 콘솔 에러 0
+
+⚠️ **`main`에 push하면 Pages가 자동 재배포된다**(1~3분). 별도 배포 절차 없음.
+
+> 활성화 방법(참고): `gh` CLI가 없어 **git credential manager에 저장된 토큰**으로 REST API를 호출했다.
+> `POST /repos/{owner}/{repo}/pages` + `{"source":{"branch":"main","path":"/"}}` → 201.
+> ⛔ 이 방식은 **저장소 설정 변경**이므로 사용자 승인 없이 임의로 하지 말 것(2026-08-28에는 명시 승인 받음).
+
+> 💡 사용자가 자주 혼동한 지점: `github.com/...`(소스 보관소, 파일 목록만 보임)과
+> `github.io/...`(실제 웹사이트)는 다른 주소다. 안내할 때 이 구분을 먼저 짚을 것.
 
 ---
 
