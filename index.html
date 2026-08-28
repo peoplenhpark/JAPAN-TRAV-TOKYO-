@@ -155,6 +155,7 @@ a{color:var(--accent2);text-decoration:none;font-weight:600}
 .wxbar .d .ii{font-size:14px;line-height:1.3}
 .wxbar .d .tt{font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .wxbar .d .tt i{font-style:normal;font-size:10px;color:var(--ink3);font-weight:600}
+.wxbar .d .rr{font-size:9px;color:var(--ink3);font-weight:600;line-height:1.3}
 .wx{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
 .wx-d{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:11px 6px;text-align:center;box-shadow:var(--shadow)}
@@ -215,10 +216,10 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 
 <div class="wxbar">
   <div class="wxbar-in">
-    <div class="tag"><b>🌤️ 날씨</b><small>8/28 예보</small></div>
-    <div class="d" data-go="weather"><div class="dd">9/5 토</div><div class="ii">☀️</div><div class="tt">30°<i>/26°</i></div></div>
-    <div class="d" data-go="weather"><div class="dd">9/6 일</div><div class="ii">🌤️</div><div class="tt">29°<i>/25°</i></div></div>
-    <div class="d" data-go="weather"><div class="dd">9/7 월</div><div class="ii">🌥️</div><div class="tt">29°<i>/25°</i></div></div>
+    <div class="tag"><b>🌤️ 날씨</b><small>8/29 조회</small></div>
+    <div class="d" data-go="weather"><div class="dd">9/5 토</div><div class="ii">🌦️</div><div class="tt">27~30°</div><div class="rr">비 30%</div></div>
+    <div class="d" data-go="weather"><div class="dd">9/6 일</div><div class="ii">🌤️</div><div class="tt">28~29°</div><div class="rr">비 20%</div></div>
+    <div class="d" data-go="weather"><div class="dd">9/7 월</div><div class="ii">☀️</div><div class="tt">29~33°</div><div class="rr">비 10%</div></div>
   </div>
 </div>
 
@@ -453,6 +454,22 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     ⛔ <b>13:30 출발만은 절대 미루지 마세요.</b> 액세스특급은 시간당 1~2편이라 한 편 놓치면 30~60분이 그대로 날아갑니다.
   </div>
 
+  <div class="note g">
+    <b>💰 한 끼를 올린다면 — 상한(1인 ₩100,000) 안에서 쓸 수 있는 두 가지</b><br>
+    현재 식비는 상한을 한참 밑돕니다(아침 26% · 점심 17% · 저녁 35%). 여유분을 한 끼에 몰아줄 수 있습니다.<br><br>
+
+    <b>① Day 1 저녁을 긴자에서 격상 <span class="chip g">추천 · 일정 변경 없음</span></b><br>
+    ¥8,000~11,000/인(₩70,000~96,000)이면 상한 이내입니다. 첫날 저녁은 이미 <b>숙소 도보권 긴자·츠키지</b>라
+    일정을 하나도 안 바꾸고 격만 올릴 수 있습니다. <b>가성비 대비 효과가 가장 큽니다.</b><br><br>
+
+    <b>② Day 1 점심을 오마카세로 <span class="chip w">일정 교체 필요</span></b><br>
+    점심 오마카세 ¥8,000~11,000이면 역시 상한 이내입니다. 다만 <b>13:10 츠키지 맛보기를 빼고
+    하마리큐(¥300)도 포기</b>해야 시간이 납니다. 츠키지는 Day 3 아침에 제대로 가니 중복이 아깝진 않지만,
+    <b>하마리큐를 잃는 게 실질 비용</b>입니다.<br><br>
+
+    ⛔ <b>저녁 오마카세(¥15,000~40,000 ≈ ₩130,000~348,000)는 상한 초과</b>라 넣지 않았습니다.
+  </div>
+
   <div class="note">
     <b>나리타 특유의 주의점</b><br>
     • <b>액세스특급은 시간당 1~2편</b>뿐입니다. 하네다처럼 아무 때나 타면 되는 게 아니라 <b>출발 시각을 전날 확인</b>해야 합니다.<br>
@@ -474,34 +491,49 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   <p class="lede">9월 초 도쿄는 <b>아직 한여름</b>입니다. 이 일정에서 가장 큰 변수라 따로 정리했습니다.</p>
 
   <div class="note a">
-    <b>⚠️ 먼저 — 이 예보는 믿을 수 있는 만큼만 믿으세요</b><br>
-    아래 3일 예보는 <b>2026-08-28(출발 8일 전) 조회 기준</b>입니다.
-    이 시점의 예보는 <b>기온은 대체로 맞지만 비·태풍은 거의 맞지 않습니다.</b><br>
-    <b>👉 9/2~9/3(출발 2~3일 전)에 반드시 다시 확인하세요.</b> 그때부터가 실제로 쓸 수 있는 예보입니다.
+    <b>⚠️ 예보 두 곳이 서로 다릅니다 — 그게 지금 가장 정확한 정보입니다</b><br>
+    2026-08-29(출발 7일 전) 기준으로 <b>미국계·일본계 예보를 둘 다 조회했더니 최대 4℃ 차이</b>가 났습니다.
+    특히 <b>9/7은 한쪽이 "가장 시원한 날", 다른 쪽이 "가장 더운 날"</b>이라고 정반대로 말합니다.<br><br>
+    이건 어느 한쪽이 틀린 게 아니라 <b>아직 확정될 수 없는 시점</b>이라는 뜻입니다.
+    그래서 하나를 고르지 않고 <b>범위로</b> 표시했습니다.<br>
+    <b>👉 9/2~9/3(출발 2~3일 전)에 반드시 다시 확인하세요.</b>
   </div>
 
-  <h3 class="grp">3일 예보 (8/28 기준 · 참고용)</h3>
+  <h3 class="grp">3일 예보 (8/29 조회 · 범위)</h3>
   <div class="wx">
     <div class="wx-d">
       <div class="d">9/5 (토)</div>
-      <div class="ic">☀️</div>
-      <div class="t">30°<small> / 26°</small></div>
-      <div class="h">습도 64%<br>동풍 약간</div>
+      <div class="ic">🌦️</div>
+      <div class="t">27~30°</div>
+      <div class="h">밤 21~26°<br><b>비 30%</b></div>
     </div>
     <div class="wx-d">
       <div class="d">9/6 (일)</div>
       <div class="ic">🌤️</div>
-      <div class="t">29°<small> / 25°</small></div>
-      <div class="h">습도 68%<br>남풍</div>
+      <div class="t">28~29°</div>
+      <div class="h">밤 22~25°<br><b>비 20%</b></div>
     </div>
     <div class="wx-d">
       <div class="d">9/7 (월)</div>
-      <div class="ic">🌥️</div>
-      <div class="t">29°<small> / 25°</small></div>
-      <div class="h">습도 71%<br>남풍</div>
+      <div class="ic">☀️</div>
+      <div class="t">29~33°</div>
+      <div class="h">밤 25~28°<br><b>비 10%</b></div>
     </div>
   </div>
-  <p style="font-size:11px;color:var(--ink3);margin:-4px 0 0">화씨 원자료를 섭씨로 환산한 값입니다(86/84°F → 30/29°C). 아이콘은 기온·습도 기반 추정이며 강수 예보가 아닙니다.</p>
+
+  <h3 class="grp">두 예보 원본 비교</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>날짜</th><th class="num">미국계</th><th class="num">일본계</th><th class="num">차이</th></tr>
+    <tr><td>9/5 (토)</td><td class="num">30° / 26°</td><td class="num">27° / 21°</td><td class="num" style="color:var(--warn)">3~5°</td></tr>
+    <tr><td>9/6 (일)</td><td class="num">29° / 25°</td><td class="num">28° / 22°</td><td class="num">1~3°</td></tr>
+    <tr><td>9/7 (월)</td><td class="num">29° / 25°</td><td class="num"><b>33° / 28°</b></td><td class="num" style="color:var(--warn)">4° · 방향 반대</td></tr>
+  </table></div>
+  <div class="note">
+    <b>어떻게 쓰면 되나</b><br>
+    • <b>짐은 더운 쪽(33°)에 맞춰</b> 싸세요. 더운데 옷이 두꺼우면 답이 없지만, 시원하면 겉옷 하나로 해결됩니다.<br>
+    • <b>일정은 지금 그대로 두세요.</b> 어느 예보가 맞든 "야외는 오전·저녁, 한낮은 실내" 배치는 유효합니다.<br>
+    • <b>9/5 비 30%</b>가 셋 중 가장 높습니다. 도착일이라 우산은 캐리어 맨 위에 두세요.
+  </div>
 
   <h3 class="grp">평년값 — 이쪽이 더 확실합니다</h3>
   <div class="tbl-scroll"><table>
@@ -962,8 +994,10 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Somerset+Ginza+East+Tokyo" target="_blank" rel="noopener">🗺️ 열기</a>
   </div>
 
-  <h3 class="grp">DAY 1 · 긴자 · 시바</h3>
+  <h3 class="grp">DAY 1 (토) · 긴자 · 시바</h3>
   <div class="card">
+    <p><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Somerset+Ginza+East+Tokyo&amp;destination=Tokyo+Tower&amp;waypoints=Tsukiji+Outer+Market|Hamarikyu+Gardens|Ginza+Six&amp;travelmode=transit" target="_blank" rel="noopener"><b>🧭 Day 1 전체 경로 한 번에 보기</b></a></p>
+    <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Tsukiji+Outer+Market" target="_blank" rel="noopener">🍣 츠키지 장외시장</a> · 도보 5분 · 13:10 맛보기</p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Hamarikyu+Gardens" target="_blank" rel="noopener">🌿 하마리큐 온시정원</a> · 숙소 도보 12~15분</p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Ginza+Six" target="_blank" rel="noopener">🛍️ 긴자식스</a> / <a href="https://www.google.com/maps/search/?api=1&amp;query=Itoya+Ginza" target="_blank" rel="noopener">✒️ 이토야</a></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Zojoji+Temple" target="_blank" rel="noopener">⛩️ 조조지</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Tokyo+Tower" target="_blank" rel="noopener">🗼 도쿄타워</a></p>
@@ -972,6 +1006,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 
   <h3 class="grp">DAY 2 (일) · 서남부</h3>
   <div class="card">
+    <p><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Higashi-Ginza+Station&amp;destination=Shibuya+Scramble+Crossing&amp;waypoints=Yebisu+Garden+Place|Osaki+Station|Meguro+Station|Nakameguro+Station&amp;travelmode=transit" target="_blank" rel="noopener"><b>🧭 Day 2 전체 경로 한 번에 보기</b></a></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Yebisu+Garden+Place" target="_blank" rel="noopener">🍺 에비스 가든플레이스</a></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Gate+City+Osaki" target="_blank" rel="noopener">🏢 게이트시티 오사키</a> · 메구로강 하류</p>
     <p><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Meguro+Station&amp;destination=Nakameguro+Station&amp;travelmode=walking" target="_blank" rel="noopener">⭐ 메구로 → 나카메구로 강변 도보</a> · 약 1.5km</p>
@@ -979,8 +1014,9 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Shibuya+Scramble+Crossing" target="_blank" rel="noopener">🌃 시부야 스크램블 교차로</a></p>
   </div>
 
-  <h3 class="grp">DAY 3 (월) · 츠키지 · 시타마치</h3>
+  <h3 class="grp">DAY 3 (월) · 츠키지 · 시타마치 → 나리타</h3>
   <div class="card">
+    <p><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Tsukiji+Outer+Market&amp;destination=Narita+International+Airport&amp;waypoints=Sensoji+Temple|Tokyo+Skytree|Somerset+Ginza+East+Tokyo&amp;travelmode=transit" target="_blank" rel="noopener"><b>🧭 Day 3 전체 경로 한 번에 보기</b></a></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Tsukiji+Outer+Market" target="_blank" rel="noopener">🍣 츠키지 장외시장</a> · 숙소 도보 5분 · <b>06:20</b></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Kaminarimon+Sensoji" target="_blank" rel="noopener">🏮 가미나리몬 · 센소지</a></p>
     <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Azumabashi+Bridge+Asakusa" target="_blank" rel="noopener">📷 아즈마바시</a> · 스카이트리 포토스팟</p>
