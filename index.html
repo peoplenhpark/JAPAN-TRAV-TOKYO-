@@ -108,8 +108,10 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:now
 .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
 .tbl-scroll table{min-width:100%}
 a{color:var(--accent2);text-decoration:none;font-weight:600}
-.maplink{display:inline-flex;align-items:center;gap:4px;background:var(--chip);border-radius:7px;
-  padding:3px 8px;font-size:11px;font-weight:700;color:var(--ink2);margin-top:7px}
+.maplink{display:inline-flex;align-items:center;gap:4px;background:var(--chip);border-radius:8px;
+  padding:5px 10px;font-size:11.5px;font-weight:700;color:var(--accent);
+  margin:8px 5px 0 0;border:1px solid var(--line)}
+.maplink:active{transform:scale(.97)}
 .day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
 .day-hd{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;cursor:pointer}
 .day-hd .dnum{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;
@@ -135,6 +137,24 @@ a{color:var(--accent2);text-decoration:none;font-weight:600}
 .ev b{font-size:13.5px;font-weight:700;display:block;letter-spacing:-.01em}
 .ev span{font-size:12px;color:var(--ink2);display:block;margin-top:2px}
 .ev .meta{font-size:11px;color:var(--ink3);margin-top:3px}
+.dayctl{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px;padding:0 2px}
+.dayctl span{font-size:11.5px;color:var(--ink3)}
+.dayctl button{border:1px solid var(--line);background:var(--card);color:var(--accent);
+  border-radius:9px;padding:5px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.dayctl button:active{transform:scale(.96)}
+.wxbar{background:var(--card);border-bottom:1px solid var(--line);padding:8px 14px}
+.wxbar-in{max-width:640px;margin:0 auto;display:flex;align-items:stretch;gap:6px}
+.wxbar .tag{display:flex;flex-direction:column;justify-content:center;padding-right:9px;
+  border-right:1px solid var(--line);margin-right:3px;flex-shrink:0}
+.wxbar .tag b{font-size:10.5px;font-weight:800;color:var(--accent);line-height:1.25;letter-spacing:-.02em}
+.wxbar .tag small{font-size:9px;color:var(--ink3)}
+.wxbar .d{flex:1;min-width:0;text-align:center;background:var(--bg);border:1px solid var(--line);
+  border-radius:9px;padding:4px 2px;cursor:pointer}
+.wxbar .d:active{transform:scale(.97)}
+.wxbar .d .dd{font-size:9.5px;color:var(--ink3);font-weight:700;line-height:1.3}
+.wxbar .d .ii{font-size:14px;line-height:1.3}
+.wxbar .d .tt{font-size:11.5px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.wxbar .d .tt i{font-style:normal;font-size:10px;color:var(--ink3);font-weight:600}
 .wx{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
 .wx-d{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:11px 6px;text-align:center;box-shadow:var(--shadow)}
@@ -164,7 +184,7 @@ a{color:var(--accent2);text-decoration:none;font-weight:600}
 .ph .rd{font-size:12.5px;color:var(--accent);font-weight:700}
 footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px;line-height:1.7}
 @media print{
-  header,nav,.hd-btns,footer{display:none!important}
+  header,nav,.hd-btns,footer,.dayctl,.wxbar{display:none!important}
   section{display:block!important;page-break-inside:auto;padding-top:8px}
   .day.closed .day-bd{display:block!important}
   body{background:#fff;color:#000;font-size:10.5pt}
@@ -192,6 +212,15 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <div class="stat"><div class="k">기준 환율</div><div class="v" id="rateHd">8.7</div><div class="s">원 / 1엔</div></div>
   </div>
 </header>
+
+<div class="wxbar">
+  <div class="wxbar-in">
+    <div class="tag"><b>🌤️ 날씨</b><small>8/28 예보</small></div>
+    <div class="d" data-go="weather"><div class="dd">9/5 토</div><div class="ii">☀️</div><div class="tt">30°<i>/26°</i></div></div>
+    <div class="d" data-go="weather"><div class="dd">9/6 일</div><div class="ii">🌤️</div><div class="tt">29°<i>/25°</i></div></div>
+    <div class="d" data-go="weather"><div class="dd">9/7 월</div><div class="ii">🌥️</div><div class="tt">29°<i>/25°</i></div></div>
+  </div>
+</div>
 
 <nav>
   <div class="navgrid">
@@ -231,13 +260,19 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     9월 초 더위를 피하는 시간대이기도 합니다. 시장의 본모습도 이른 아침입니다.
   </div>
 
-  <div class="day" id="day1">
+  <div class="dayctl">
+    <span id="dayHint">날짜를 눌러 펼치세요</span>
+    <button id="toggleAll">전체 펼치기</button>
+  </div>
+
+  <div class="day closed" id="day1">
     <div class="day-hd">
       <div class="dnum">1<small>DAY</small></div>
       <div class="dt"><b>9/5 (토) · 긴자 · 시바</b><span>🟡 중간 강도 — 착지 + 도쿄타워 야경</span></div>
       <div class="arw">▾</div>
     </div>
     <div class="day-bd"><div class="tl">
+
       <div class="ev dim"><div class="tm">08:00</div><b>🛫 인천 출발</b>
         <span>비행 약 2시간 20분. 한일 시차가 없어 시계를 고칠 일이 없습니다.</span></div>
 
@@ -288,13 +323,14 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     </div></div>
   </div>
 
-  <div class="day" id="day2">
+  <div class="day closed" id="day2">
     <div class="day-hd">
       <div class="dnum">2<small>DAY</small></div>
       <div class="dt"><b>9/6 (일) · 에비스 · 메구로강 · 시부야</b><span>🔴 풀데이 — 서남부 종단</span></div>
       <div class="arw">▾</div>
     </div>
     <div class="day-bd"><div class="tl">
+
       <div class="ev dim"><div class="tm">08:00</div><b>조식 · 여유롭게 출발</b>
         <span>츠키지는 <b>일요일 휴무</b>라 오늘은 아침이 비어 있습니다. 어제 편의점에서 사둔 걸로 숙소에서 해결해도 됩니다.</span>
         <div class="meta">서비스드 레지던스라 주방·냉장고가 있습니다</div></div>
@@ -348,13 +384,14 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     </div></div>
   </div>
 
-  <div class="day" id="day3">
+  <div class="day closed" id="day3">
     <div class="day-hd">
       <div class="dnum">3<small>DAY</small></div>
       <div class="dt"><b>9/7 (월) · 츠키지 · 아사쿠사 · 스카이트리 → 나리타</b><span>🔴 이른 시작 — 13:30 숙소 출발 고정</span></div>
       <div class="arw">▾</div>
     </div>
     <div class="day-bd"><div class="tl">
+
       <div class="ev"><div class="tm">06:20</div><b>🍣 츠키지 장외시장 — 본편</b>
         <span>숙소 도보 5분. <b>월요일 정상 영업</b>이고, 이른 아침이 시장의 본모습입니다. 계란말이 꼬치, 해산물덮밥, 구운 가리비.</span>
         <div class="meta">05:00~14:00 · <b>7시 전이면 줄이 거의 없습니다</b> · 소규모 점포는 현금만 받는 곳이 많음 · 짐 없이 슬리퍼로 갈 수 있는 게 이 숙소의 최대 이점</div></div>
@@ -624,24 +661,28 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <div class="sub">浜離宮恩賜庭園 · 숙소 도보 12~15분 · ¥300</div>
     <p>에도시대 쇼군의 별저 정원. 바닷물을 끌어들인 조수 연못이 있고, 뒤로 시오도메 고층빌딩이 겹쳐 보입니다. <b>도착 당일 시차 없이 가볍게 채우기</b> 딱 좋습니다.</p>
     <div class="chips"><span class="chip">09:00~17:00 (입장 16:30)</span><span class="chip">나카지마 찻집 말차+화과자 ¥1,000 내외</span></div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Hamarikyu+Gardens" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="card">
     <h4>조조지 <span class="badge b-rec">DAY 1</span></h4>
     <div class="sub">増上寺 · 도쿄타워 바로 앞 · 무료</div>
     <p>도쿠가와 가문 보리사. 도쿄타워 사진의 90%가 여기서 나옵니다. 타워 가는 길에 자동으로 들릅니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Zojoji+Temple+Tokyo" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="card">
     <h4>츠키지 혼간지 <span class="badge b-rec">숙소 도보 3분</span></h4>
     <div class="sub">築地本願寺 · 무료</div>
     <p>일본 절인데 <b>인도·고대 아시아 양식</b>의 석조 건물이라 생김새가 완전히 이질적입니다. 파이프오르간도 있습니다. 츠키지 아침 먹고 나오는 길에 5분이면 봅니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Tsukiji+Hongwanji+Temple" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="card">
     <h4>아즈마바시 · 스미다 공원 <span class="badge b-rec">DAY 3</span></h4>
     <div class="sub">吾妻橋 · 隅田公園 · 무료</div>
     <p>아사쿠사에서 스카이트리로 넘어가는 다리. <b>스카이트리 + 아사히맥주 본사 황금 조형물</b>이 한 프레임에 들어오는 유명 포토 스팟입니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Azumabashi+Bridge+Asakusa" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <h3 class="grp">추천 — 시간이 남거나 계획이 틀어지면</h3>
@@ -650,12 +691,14 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <h4>카레타 시오도메 46F 전망 라운지 <span class="badge b-opt">무료 · 숙소 도보권</span></h4>
     <div class="sub">カレッタ汐留 · 오에도선 시오도메 / 츠키지에서 도보 15분</div>
     <p>무료 전망 공간에서 도쿄타워와 레인보우브리지 방향이 보입니다. <b>돈 안 쓰고 야경 하나 더</b> 챙기고 싶을 때. <span class="chip w">운영 형태가 바뀔 수 있어 방문 전 확인 권장</span></p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Caretta+Shiodome" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="card">
     <h4>도쿄도청 전망대 <span class="badge b-opt">무료</span></h4>
     <div class="sub">東京都庁 · 신주쿠 · 202m</div>
     <p>완전 무료 전망대. 다만 이번 일정은 신주쿠를 지나지 않아 <b>왕복 1시간이 순수 추가</b>됩니다. 유료 전망대 두 곳을 이미 가므로 우선순위는 낮습니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Tokyo+Metropolitan+Government+Building+Observatory" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="card">
@@ -663,6 +706,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <div class="sub">SHIBUYA SKY · 229m · 온라인 ¥2,500~</div>
     <p>옥상이 완전 개방형이라 체험이 도쿄타워·스카이트리와 다릅니다. 단 이번 일정엔 전망대가 이미 둘. <b>일몰 슬롯은 몇 주 전 매진</b>되니 갈 거면 지금 예약하세요.</p>
     <div class="chips"><span class="chip w">사전예약 필수</span><span class="chip">10:00~22:30 (마감 21:20)</span><span class="chip">우천 시 옥상 폐쇄</span></div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Shibuya+Sky" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="note">
@@ -678,71 +722,100 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 <!-- ================= 맛집 ================= -->
 <section id="tab-places">
   <h2 class="sec">🍣 맛집</h2>
-  <p class="lede">동선에 실제로 걸리는 곳만 골랐습니다. 상호·영업시간은 바뀔 수 있으니 구글맵으로 당일 영업 여부를 확인하세요.</p>
+  <p class="lede">동선에 실제로 걸리는 곳만 골랐습니다. 상호·영업시간은 바뀔 수 있으니 지도 버튼으로 당일 영업 여부를 확인하세요.</p>
+
+  <div class="note a">
+    <b>💰 식사 예산 상한 — 1인 1끼 ₩100,000 이내</b><br>
+    환율 8.7원 기준 <b>¥11,400</b>이 상한선입니다. 아래 추천은 <b>딱 한 곳만 빼고 전부 이 안에 들어옵니다.</b><br><br>
+    <span class="chip g">츠키지 아침 ¥3,000 ≈ ₩26,000</span>
+    <span class="chip g">라멘 ¥1,200 ≈ ₩10,000</span>
+    <span class="chip g">텐동 ¥2,000 ≈ ₩17,000</span>
+    <span class="chip g">이자카야 ¥4,000 ≈ ₩35,000</span>
+    <span class="chip g">스키야키 점심 ¥5,000 ≈ ₩44,000</span>
+    <span class="chip w">저녁 오마카세 ¥15,000~ ≈ ₩130,000~ ⛔초과</span>
+  </div>
 
   <h3 class="grp">츠키지 — 숙소 도보 5분 · DAY 3(월) 06:20</h3>
   <div class="card">
     <h4>계란말이 꼬치</h4><div class="sub">다시가 흥건한 두툼한 계란말이 · ¥100~200</div>
     <p>마루타케·야마초 등 전문점이 나란히 있습니다. 갓 부친 걸 꼬치에 꽂아 주는데, 걸어 다니며 먹는 츠키지의 상징. 줄이 짧은 쪽으로 가면 됩니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Tsukiji+Outer+Market+tamagoyaki" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>해산물 덮밥 · 스시</h4><div class="sub">가이센동 ¥2,000~4,000</div>
     <p>성게·연어알·참치를 얹은 덮밥. 스시잔마이 본점은 24시간이라 이른 아침에도 확실히 열려 있어 실패가 없습니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Sushizanmai+Tsukiji+Honten" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>구이류 · 호르몬동</h4><div class="sub">가리비·굴 ¥500~1,000 / 호르몬동 ¥800 내외</div>
     <p>불에 구워주는 대형 가리비·굴이 아침부터 팔립니다. 키츠네야의 호르몬동(소 내장 조림 덮밥)은 현지인 줄이 서는 곳.</p>
     <div class="note" style="margin-top:8px"><b>현금 챙기세요.</b> 장외시장 소규모 점포는 카드가 안 되는 곳이 많습니다.</div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Kitsuneya+Tsukiji" target="_blank" rel="noopener">🗺️ 지도 보기 (키츠네야)</a>
   </div>
 
   <h3 class="grp">긴자 · 숙소 주변 — DAY 1</h3>
   <div class="card">
     <h4>렌가테이</h4><div class="sub">煉瓦亭 · 1895년 · 오므라이스·포크커틀릿</div>
     <p>일본식 경양식(요쇼쿠)의 원조로 불리는 집. 오므라이스와 돈카츠의 원형을 만든 곳으로 알려져 있습니다. 첫날 점심으로 상징성이 좋습니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Rengatei+Ginza" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>긴자 라이온 비어홀</h4><div class="sub">1934년 건축 · 맥주 + 소시지</div>
     <p>현존 일본 최고(最古) 비어홀. 모자이크 벽화가 있는 홀 자체가 볼거리입니다. 예약 없이 편하게 들어갈 수 있어 저녁 대안으로 유용.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Ginza+Lion+Beer+Hall" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>츠키지 · 히가시긴자 이자카야</h4><div class="sub">숙소 도보권</div>
     <p>지친 첫날 저녁은 멀리 가지 말고 도보권에서 해결하는 게 낫습니다. 이 일대는 시장 사람들이 다니던 골목이라 선택지가 많고 가격도 긴자 중심가보다 온건합니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=izakaya+near+Higashi-Ginza+Station" target="_blank" rel="noopener">🗺️ 주변 이자카야 보기</a>
   </div>
   <div class="card">
-    <h4>[고급] 스시 오마카세</h4><div class="sub">긴자 일대 · ¥15,000~40,000/인</div>
-    <p>긴자는 오마카세 밀집 지역입니다. 유명 업장은 <b>수개월 전 예약</b>이 필요하고 호텔 컨시어지를 통해야 하는 곳도 있습니다. 계획이 있다면 지금 움직이세요.</p>
+    <h4>스시 오마카세 — <b style="color:var(--accent)">점심으로 가세요</b></h4>
+    <div class="sub">긴자 일대 · 점심 ¥8,000~11,000 <b>(₩70,000~96,000 — 상한 이내 ✅)</b></div>
+    <p><b>저녁 오마카세는 ¥15,000~40,000</b>으로 <b style="color:var(--warn)">1인 ₩130,000~348,000</b> — 정하신 <b>1끼 ₩100,000 상한을 넘습니다.</b></p>
+    <p>같은 업장이라도 <b>런치 코스는 대개 절반 이하</b>입니다. 재료와 대접은 크게 다르지 않고 코스 가짓수만 줄어듭니다. <b>점심에 가면 상한 안에서 오마카세를 경험할 수 있습니다.</b></p>
+    <p>⚠️ 다만 <b>이 일정엔 긴자에서 여유 있게 점심 먹을 시간이 없습니다.</b> Day 1은 13:10 츠키지·Day 2는 에비스·Day 3은 소라마치입니다. 하시려면 <b>Day 1 점심을 오마카세로 바꾸고 하마리큐를 빼는</b> 방식이 현실적입니다.</p>
+    <div class="chips"><span class="chip w">인기 업장은 수개월 전 예약</span><span class="chip">호텔 컨시어지 경유 필요한 곳도 있음</span></div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=sushi+omakase+lunch+Ginza" target="_blank" rel="noopener">🗺️ 긴자 오마카세 찾기</a>
   </div>
 
   <h3 class="grp">에비스 · 나카메구로 — DAY 2</h3>
   <div class="card">
     <h4>AFURI</h4><div class="sub">에비스 · 유즈시오 라멘 ¥1,200 내외</div>
     <p>유자를 넣은 맑은 소금 라멘. 돈코츠가 부담스러울 때 딱 맞고, 한국인 입맛에 실패 확률이 낮습니다. 점심시간 회전은 빠른 편.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=AFURI+Ebisu" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>에비스 요코초</h4><div class="sub">恵比寿横丁 · 이자카야 골목</div>
     <p>옛 시장 건물을 개조한 좁은 골목에 작은 술집이 다닥다닥. 저녁이 진짜지만 낮에도 여는 집이 있습니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Ebisu+Yokocho" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>스타벅스 리저브 로스터리 도쿄</h4><div class="sub">나카메구로 · 메구로강변 4층 규모</div>
     <p>단순 카페가 아니라 로스팅 설비를 통째로 넣은 건물. 층마다 콘셉트가 다르고 3층은 칵테일 바(밤). 강 쪽 테라스 자리가 좋습니다. 오후엔 대기 발생.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Starbucks+Reserve+Roastery+Tokyo" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>오니버스 커피 나카메구로</h4><div class="sub">스페셜티 커피 · 소규모</div>
     <p>줄 서서 마시는 로스터리. 좌석이 적어 테이크아웃해서 강변을 걷는 편이 낫습니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Onibus+Coffee+Nakameguro" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <h3 class="grp">시부야 — DAY 2 저녁</h3>
   <div class="card">
     <h4>시부야 요코초</h4><div class="sub">미야시타파크 1층 · 전국 향토요리</div>
     <p>홋카이도부터 오키나와까지 지역별 술집이 한 줄로. 어디 들어갈지 고민되면 여기가 안전합니다. 늦게까지 영업.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Shibuya+Yokocho+Miyashita+Park" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>우오베이</h4><div class="sub">회전스시 · 접시당 ¥120~</div>
     <p>터치패널로 주문하면 초고속 레인으로 날아옵니다. 가성비 + 구경거리. 저녁에 비싸게 안 먹고 싶을 때.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Uobei+Sushi+Shibuya" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>이치란 라멘</h4><div class="sub">1인 칸막이 좌석 · ¥1,000 내외</div>
     <p>말 한마디 안 하고 먹을 수 있는 구조. 늦은 밤에도 열려 있어 마지막 끼니로 유용합니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Ichiran+Shibuya" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <h3 class="grp">아사쿠사 — 참고용 (이번 일정엔 시간이 안 납니다)</h3>
@@ -753,14 +826,17 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   <div class="card">
     <h4>다이코쿠야</h4><div class="sub">大黒家 · 텐동 ¥2,000 내외</div>
     <p>참기름으로 진하게 튀겨 짙은 간장 소스를 끼얹는 에도식 텐동. 튀김이 검게 보이는 게 정상입니다. 호불호가 갈리지만 아사쿠사에 왔으면 한 번쯤.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Daikokuya+Tempura+Asakusa" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>아사쿠사 이마한</h4><div class="sub">스키야키·샤부샤부 · ¥5,000~/인</div>
-    <p>점심 코스가 저녁보다 훨씬 쌉니다. 제대로 된 소고기 한 끼를 원하면 여기.</p>
+    <p>점심 코스가 저녁보다 훨씬 쌉니다. 제대로 된 소고기 한 끼를 원하면 여기. 점심 ¥5,000이면 <b>₩44,000 — 상한 이내</b>입니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Asakusa+Imahan+Honten" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
   <div class="card">
     <h4>카미야 바</h4><div class="sub">神谷バー · 1880년 · 덴키브랑</div>
     <p>일본 최초의 바. 명물 칵테일 "덴키브랑"이 한 잔 ¥400 정도. 낮술 분위기가 특이해서 경험 삼아 들를 만합니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Kamiya+Bar+Asakusa" target="_blank" rel="noopener">🗺️ 지도 보기</a>
   </div>
 
   <div class="note">
@@ -792,6 +868,9 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
       • <b>오에도선</b>으로 → 도쿄타워(아카바네바시) 직통<br>
       요청하신 7곳 중 <b>환승이 필요한 곳이 하나도 없습니다.</b>
     </div>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Somerset+Ginza+East+Tokyo" target="_blank" rel="noopener">🗺️ 숙소 지도</a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Higashi-Ginza+Station" target="_blank" rel="noopener">🚇 히가시긴자역</a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Tsukijishijo+Station" target="_blank" rel="noopener">🚇 츠키지시조역</a>
   </div>
 
   <h3 class="grp">교통카드 — 뭘 살 것인가</h3>
@@ -835,6 +914,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
       <b>귀국 전날 밤에 출발 시각을 확인</b>해 두고, 그 시각에서 역까지 도보 3분을 빼서 숙소 출발 시각을 정하세요.
     </div>
     <p style="margin-top:8px"><b>행선지 확인 —</b> 같은 홈에 아사쿠사선 직통이 아닌 열차도 옵니다. 전광판에 <b>"アクセス特急"</b> 및 아사쿠사선 방면 표기를 확인하세요.</p>
+    <a class="maplink" href="https://www.google.com/maps/dir/?api=1&amp;origin=Higashi-Ginza+Station&amp;destination=Narita+International+Airport&amp;travelmode=transit" target="_blank" rel="noopener">🗺️ 숙소 → 나리타 경로·시각표</a>
   </div>
   <div class="card">
     <h4>놓쳤을 때 대안</h4>
@@ -846,6 +926,7 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
     <h4>터미널 확인</h4>
     <p>나리타는 <b>제1·2·3터미널</b>이 떨어져 있습니다. 제3터미널(LCC 전용)은 제2터미널역에서 <b>도보 약 15분 또는 셔틀</b>이라 시간이 더 듭니다. 항공사 터미널을 미리 확인하세요.</p>
     <p>액세스특급은 <b>공항 제2빌딩역 → 나리타공항역</b> 순으로 전 터미널에 정차합니다.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Narita+International+Airport+terminals" target="_blank" rel="noopener">🗺️ 나리타 터미널 지도</a>
   </div>
 
   <h3 class="grp">실전 요령</h3>
@@ -1124,8 +1205,20 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
 
   <h3 class="grp">돈이 크게 갈리는 지점</h3>
   <div class="card">
-    <h4>① 스시 오마카세</h4>
-    <p>긴자 오마카세는 <b>1인 ¥15,000~40,000</b>. 한 끼로 2인 26~70만원이 나갑니다. 하려면 예산을 따로 잡고, 안 할 거면 츠키지 아침 해산물덮밥이 훨씬 가성비가 좋습니다.</p>
+    <h4>① 스시 오마카세 <span class="badge b-must">상한 관련</span></h4>
+    <p>정하신 상한이 <b>1인 1끼 ₩100,000(≈¥11,400)</b>입니다. <b>저녁</b> 오마카세는 1인 ¥15,000~40,000이라 <b style="color:var(--warn)">₩130,000~348,000 — 초과</b>입니다.</p>
+    <p><b>점심 오마카세(¥8,000~11,000 ≈ ₩70,000~96,000)</b>로 가면 상한 안에 들어옵니다. 안 하실 거면 <b>츠키지 아침 해산물덮밥(¥3,000 ≈ ₩26,000)</b>이 가성비로 압도적입니다.</p>
+  </div>
+  <div class="card">
+    <h4>💰 식사 상한 대비 현재 예산</h4>
+    <p>아래 표의 식비는 <b>상한을 한참 밑돕니다</b> — 상한은 "여기까지 써도 된다"는 천장이지 목표가 아닙니다.</p>
+    <div class="tbl-scroll" style="margin-top:8px"><table>
+      <tr><th>끼니</th><th class="num">1인 책정</th><th class="num">상한 대비</th></tr>
+      <tr><td>츠키지 아침</td><td class="num">¥3,000 (₩26,000)</td><td class="num" style="color:var(--ok)">26%</td></tr>
+      <tr><td>점심 (평균)</td><td class="num">¥2,000 (₩17,000)</td><td class="num" style="color:var(--ok)">17%</td></tr>
+      <tr><td>저녁 (평균)</td><td class="num">¥4,000 (₩35,000)</td><td class="num" style="color:var(--ok)">35%</td></tr>
+    </table></div>
+    <p style="margin-top:8px">한 끼 정도는 <b>¥8,000~11,000(₩70,000~96,000)</b>까지 올려도 상한 안입니다. 올린다면 <b>Day 1 저녁(긴자)</b> 또는 <b>점심 오마카세</b>가 값어치가 가장 큽니다.</p>
   </div>
   <div class="card">
     <h4>② 전망대 개수</h4>
@@ -1240,15 +1333,18 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   };
 
   /* ---------- 탭 ---------- */
+  function showTab(name){
+    $$(".navgrid button").forEach(function(b){ b.classList.toggle("on", b.dataset.tab === name); });
+    $$("section").forEach(function(s){ s.classList.toggle("on", s.id === "tab-" + name); });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   $$(".navgrid button").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      $$(".navgrid button").forEach(function(b){ b.classList.remove("on"); });
-      $$("section").forEach(function(s){ s.classList.remove("on"); });
-      btn.classList.add("on");
-      var sec = document.getElementById("tab-" + btn.dataset.tab);
-      if (sec) sec.classList.add("on");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    btn.addEventListener("click", function(){ showTab(btn.dataset.tab); });
+  });
+
+  /* ---------- 상단 날씨 띠 → 날씨 탭 ---------- */
+  $$(".wxbar .d[data-go]").forEach(function(el){
+    el.addEventListener("click", function(){ showTab(el.dataset.go); });
   });
 
   /* ---------- 다크모드 ---------- */
@@ -1338,10 +1434,26 @@ footer{text-align:center;font-size:11px;color:var(--ink3);padding:26px 14px 40px
   if (jpy) jpy.addEventListener("input", fromJpy);
   if (krw) krw.addEventListener("input", fromKrw);
 
-  /* ---------- 일자 아코디언 ---------- */
+  /* ---------- 일자 아코디언 (기본: 전부 접힘) ---------- */
+  var allBtn = $("#toggleAll"), hint = $("#dayHint");
+  function syncDayCtl(){
+    var days = $$(".day"), open = days.filter(function(d){ return !d.classList.contains("closed"); }).length;
+    if (allBtn) allBtn.textContent = (open === days.length) ? "전체 접기" : "전체 펼치기";
+    if (hint) hint.textContent = open === 0 ? "날짜를 눌러 펼치세요"
+                               : open + " / " + days.length + "일 펼침";
+  }
   $$(".day-hd").forEach(function(hd){
-    hd.addEventListener("click", function(){ hd.parentElement.classList.toggle("closed"); });
+    hd.addEventListener("click", function(){
+      hd.parentElement.classList.toggle("closed");
+      syncDayCtl();
+    });
   });
+  if (allBtn) allBtn.addEventListener("click", function(){
+    var days = $$(".day"), openAll = days.some(function(d){ return d.classList.contains("closed"); });
+    days.forEach(function(d){ d.classList.toggle("closed", !openAll); });
+    syncDayCtl();
+  });
+  syncDayCtl();
 
   /* ---------- 체크리스트 (기기 저장) ---------- */
   $$("#tab-check .card").forEach(function(card){
